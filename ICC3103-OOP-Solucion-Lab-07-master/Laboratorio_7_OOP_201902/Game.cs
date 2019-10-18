@@ -47,6 +47,7 @@ namespace Laboratorio_7_OOP_201902
             {
                 return this.players;
             }
+ 
         }
         public Player ActivePlayer
         {
@@ -378,9 +379,38 @@ namespace Laboratorio_7_OOP_201902
             Decks = formatter.Deserialize(fs) as List<Deck>;
             fs.Close();
 
-            else
+            string file1 = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\ActualPlayers.txt";
+            if (!File.Exists(file1))
             {
-                Console.WriteLine("hola");
+                return false;
+            }
+            FileStream fs1 = new FileStream(file1, FileMode.Open);
+            IFormatter formatter1 = new BinaryFormatter();
+            Players = formatter1.Deserialize(fs1) as Player[];
+            fs1.Close();
+
+            string file2 = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\ActualBoard.txt";
+            if (!File.Exists(file2))
+            {
+                return false;
+            }
+            FileStream fs2 = new FileStream(file2, FileMode.Open);
+            IFormatter formatter2 = new BinaryFormatter();
+            Players = formatter2.Deserialize(fs2) as Player[];
+            fs2.Close();
+
+            string file3 = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\GAPlayer.txt";
+            if (!File.Exists(file3))
+            {
+                return false;
+            }
+            FileStream fs3 = new FileStream(file3, FileMode.Open);
+            IFormatter formatter3 = new BinaryFormatter();
+            Players = formatter3.Deserialize(fs3) as Player[];
+            fs3.Close();
+
+            
+
             }
         }
     }
