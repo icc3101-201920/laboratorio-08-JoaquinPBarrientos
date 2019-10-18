@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Laboratorio_7_OOP_201902.Cards
 {
-    public class CombatCard : Card, ICharacteristics
+    public class CombatCard : Card, Interfaces.ICharacteristics
     {
         //Atributos
         private int attackPoints;

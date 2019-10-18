@@ -28,7 +28,10 @@ namespace Laboratorio_7_OOP_201902
             cards.RemoveAt(cardId);
         }
 
-        
+        public List<string> GetCharacteristics()
+        {
+            throw new NotImplementedException();
+        }
 
         public void Shuffle()
         {
@@ -44,11 +47,14 @@ namespace Laboratorio_7_OOP_201902
             }
         }
         
-        public List<string> GetCharacteristics()
-        {
-            List<Card> Cartas;
+        // public List<string> GetCharacteristics()
+        
+           // List<Card> Cartas;
 
-            List<Card> MeleeCards = Cards.Where(Cards.type = EnumType.melee);
+           // List<Card> MeleeCards = Cards.Where(Cards.card.Type = EnumType.melee);
+            //int totalCartasMelee = MeleeCards.Count;
+           
+
         }
     }
-}
+

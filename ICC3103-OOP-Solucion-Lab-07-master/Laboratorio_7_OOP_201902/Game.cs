@@ -5,10 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace Laboratorio_7_OOP_201902
-{
+{   [Serializable]
     public class Game
     {
         //Constantes
@@ -172,6 +174,7 @@ namespace Laboratorio_7_OOP_201902
                         }
                         firstOrSecondUser = ActivePlayer.Id == 0 ? 1 : 0;
                     }
+                    SaveData();
                     turn += 1;
                 }
                 //turnos siguientes
@@ -337,5 +340,15 @@ namespace Laboratorio_7_OOP_201902
                 captains.Add(new SpecialCard(cardDetails[1], (EnumType)Enum.Parse(typeof(EnumType), cardDetails[2]), cardDetails[3]));
             }
         }
+        public void SaveData()
+        {
+            string fileForGameActivePlayers = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\GameActivePlayer.txt";
+            FileStream fs2 = new FileStream(fileForGameActivePlayers, FileMode.Create);
+            IFormatter formatter2 = new BinaryFormatter();
+            formatter2.Serialize(fs2, ActivePlayer);
+            fs2.Close();
+        }
     }
+
+
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Laboratorio_7_OOP_201902.Cards
 {
-    public class SpecialCard : Card , ICharacteristics
+    public class SpecialCard : Card , Interfaces.ICharacteristics
     {
         //Atributos
         private string buffType;
