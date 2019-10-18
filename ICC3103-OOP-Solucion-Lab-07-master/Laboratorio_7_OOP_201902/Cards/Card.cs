@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Laboratorio_7_OOP_201902.Cards
 {
-    public abstract class Card: ICharacteristics
+    public abstract class Card: Interfaces.ICharacteristics
     {
         //Atributos
         protected string name;
@@ -52,6 +52,10 @@ namespace Laboratorio_7_OOP_201902.Cards
                 this.effect = value;
             }
         }
-        
+
+        public List<string> GetCharacteristics()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

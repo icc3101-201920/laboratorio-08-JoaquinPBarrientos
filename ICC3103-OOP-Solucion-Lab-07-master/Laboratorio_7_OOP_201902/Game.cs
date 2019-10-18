@@ -342,11 +342,46 @@ namespace Laboratorio_7_OOP_201902
         }
         public void SaveData()
         {
-            string fileForGameActivePlayers = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\GameActivePlayer.txt";
-            FileStream fs2 = new FileStream(fileForGameActivePlayers, FileMode.Create);
-            IFormatter formatter2 = new BinaryFormatter();
-            formatter2.Serialize(fs2, ActivePlayer);
-            fs2.Close();
+            string fileForGAPlayers = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\GAPlayer.txt";
+            FileStream fileStream = new FileStream(fileForGAPlayers, FileMode.Create);
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(fileStream,ActivePlayer);
+            fileStream.Close();
+
+            string fileForActualDecks = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\ActualDecks.txt";
+            FileStream fileStreamADeck = new FileStream(fileForActualDecks, FileMode.Create);
+            IFormatter formatterADeck = new BinaryFormatter();
+            formatterADeck.Serialize(fileStreamADeck, Decks);
+            fileStream.Close();
+
+            string fileForActualBoard = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\ActualBoard.txt";
+            FileStream fileStreamABoard = new FileStream(fileForActualBoard, FileMode.Create);
+            IFormatter formatterABoard = new BinaryFormatter();
+            formatterABoard.Serialize(fileStreamABoard, BoardGame);
+
+            string fileForActualPlayers= Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\ActualPlayers.txt";
+            FileStream fileStreamAPlayers = new FileStream(fileForActualPlayers, FileMode.Create);
+            IFormatter formatterAPlayers = new BinaryFormatter();
+            formatterAPlayers.Serialize(fileStreamAPlayers, Players);
+        }
+        
+        public bool LoadData()
+        {
+            string file = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\ActualDecks.txt";
+            if (!File.Exists(file))
+            {
+                return false;
+            }
+
+            FileStream fs = new FileStream(file, FileMode.Open);
+            IFormatter formatter = new BinaryFormatter();
+            Decks = formatter.Deserialize(fs) as List<Deck>;
+            fs.Close();
+
+            else
+            {
+                Console.WriteLine("hola");
+            }
         }
     }
 
