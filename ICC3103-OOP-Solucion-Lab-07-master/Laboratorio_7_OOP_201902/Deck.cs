@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Laboratorio_7_OOP_201902
 {
-    public class Deck : ICharacteristics
+    public class Deck : Interfaces.ICharacteristics
     {
 
         private List<Card> cards;
@@ -43,6 +43,12 @@ namespace Laboratorio_7_OOP_201902
                 cards[n] = value;
             }
         }
+        
+        public List<string> GetCharacteristics()
+        {
+            List<Card> Cartas;
 
+            List<Card> MeleeCards = Cards.Where(Cards.type = EnumType.melee);
+        }
     }
 }
