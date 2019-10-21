@@ -104,6 +104,21 @@ namespace Laboratorio_7_OOP_201902
                     where card.Type == EnumType.weather
                     select card;
 
+                string totalAttackPoints = Convert.ToString( totalAttackPonitsMelee.Sum() + totalAttackPonitsRange.Sum()+ totalAttackPonitsLongRange.Sum());
+
+                totalCards.Add(Convert.ToString(totalCartasMelee.Count()));
+                totalCards.Add(Convert.ToString(totalAttackPonitsMelee.Sum()));
+                totalCards.Add(Convert.ToString(totalCartasRange.Count()));
+                totalCards.Add(Convert.ToString(totalAttackPonitsRange.Sum()));
+                totalCards.Add(Convert.ToString(totalCartasLongRange.Count()));
+                totalCards.Add(Convert.ToString(totalAttackPonitsLongRange.Sum()));
+                totalCards.Add(Convert.ToString(totalAttackPoints));
+                totalCards.Add(Convert.ToString(totalCartasBuff.Count()));
+                totalCards.Add(Convert.ToString(totalCartasWeather.Count()));
+
+
+
+            return totalCards;
 
             }
     }
